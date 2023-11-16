@@ -11,10 +11,12 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   double _deviceHeight = 0;
   double _deviceWidth = 0;
+  var _selectedGame;
 
   @override
   void initState() {
     super.initState();
+    _selectedGame = 0;
   }
 
   @override
@@ -37,6 +39,11 @@ class _HomePageState extends State<HomePage> {
       width: _deviceWidth,
       child: PageView(
         scrollDirection: Axis.horizontal,
+        onPageChanged: (_index) {
+          setState(() {
+          _selectedGame = _index;
+          });
+        },
         children: featuredGames.map((e) {
           return Container(
             decoration: BoxDecoration(
@@ -84,6 +91,8 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
           _topBarWidget(),
+          SizedBox(height: _deviceHeight * 0.13),
+          _featuredGamesInfoWidget(),
         ],
       ),
     );
@@ -119,6 +128,47 @@ class _HomePageState extends State<HomePage> {
               ),
             ],
           )
+        ],
+      ),
+    );
+  }
+
+  Widget _featuredGamesInfoWidget() {
+    return SizedBox(
+      height: _deviceHeight * 0.12,
+      width: _deviceWidth,
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          Text(
+            featuredGames[_selectedGame].title,
+            maxLines: 2,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: _deviceHeight * 0.035,
+            ),
+          ),
+          SizedBox(height: _deviceHeight * 0.01),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisSize: MainAxisSize.max,
+            children: featuredGames.map((e) {
+              var isActive = e.title == featuredGames[_selectedGame].title;
+              var circleRadius = _deviceHeight * 0.004;
+              return Container(
+                margin: EdgeInsets.only(right: _deviceWidth * 0.015),
+                height: circleRadius * 2,
+                width: circleRadius * 2,
+                decoration: BoxDecoration(
+                  color: isActive ? Colors.green: Colors.grey,
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              );
+            }).toList(),
+          ),
         ],
       ),
     );
