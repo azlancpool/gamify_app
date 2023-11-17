@@ -105,6 +105,7 @@ class _HomePageState extends State<HomePage> {
               games,
             ),
           ),
+          _featuredGamebannerWidget(),
         ],
       ),
     );
@@ -185,5 +186,20 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-
+  
+  Widget _featuredGamebannerWidget() {
+    return Container(
+      height: _deviceHeight * 0.13,
+      width: _deviceWidth,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(5),
+        image:  DecorationImage(
+          fit: BoxFit.cover,
+          image: NetworkImage(
+            featuredGames[3].coverImage.url,
+          )
+        ),
+      ),
+    );
+  }
 }
