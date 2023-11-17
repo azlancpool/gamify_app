@@ -106,6 +106,12 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           _featuredGamebannerWidget(),
+          ScrollableGamesWidget(
+              _deviceHeight * 0.22,
+              _deviceWidth,
+              false,
+              games2,
+            )
         ],
       ),
     );
