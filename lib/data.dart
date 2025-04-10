@@ -41,9 +41,9 @@ List<Game> games = [
     "Massive Entertainment",
   ),
   Game(
-    "Resident Evil 2",
+    "Resident Evil 4",
     GameImage(
-        "https://media.playstation.com/is/image/SCEA/resident-evil-2-box-art-01-ps4-us-12dec18?\$native_nt\$",
+        "https://image.api.playstation.com/vulcan/ap/rnd/202210/0706/EVWyZD63pahuh95eKloFaJuC.png",
         ""),
     "",
     "Capcom",
@@ -61,7 +61,9 @@ List<Game> games2 = [
   ),
   Game(
     "The Last of Us Part II",
-    GameImage("https://static.wikia.nocookie.net/thelastofus/images/f/fe/Portada_Parte_I_limpia.jpeg/revision/latest/thumbnail/width/360/height/360?cb=20211209015400&path-prefix=es", ""),
+    GameImage(
+        "https://static.wikia.nocookie.net/thelastofus/images/f/fe/Portada_Parte_I_limpia.jpeg/revision/latest/thumbnail/width/360/height/360?cb=20211209015400&path-prefix=es",
+        ""),
     "",
     "Naughty Dog",
   ),
